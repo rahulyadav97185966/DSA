@@ -107,7 +107,11 @@ int main(){
         cout<<"\n";
     }
 
-
+    // delete this
+    for(int i=0;i<m;i++){
+        delete []arr2[i];
+    }
+    delete []arr2;
 
 
 
