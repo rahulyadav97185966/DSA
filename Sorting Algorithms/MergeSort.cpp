@@ -1,60 +1,67 @@
-#include<bits/stdc++.h>
+
+#include <iostream>
 using namespace std;
-void Merge(int arr[], int begin, int mid, int end){
 
-    int left_arr_size = mid-begin+1;
-    int right_arr_size = end-mid;
-
-    // Create temp array
-    int* left = new int[left_arr_size];
-    int* right = new int[right_arr_size];
-
-    for(int i=0;i<left_arr_size;i++){
-        left[i] = arr[begin + i];
+void merge(int arr[], int s, int e){
+    int mid = (s+e)/2;
+    
+    int len1 = mid-s+1;
+    int len2 = e-mid;
+    //create left and right array and assigning size
+    int* left = new int[len1];
+    int* right = new int[len2];
+    
+    //copying to left and right array
+    int original_size = s;
+    for(int i=0;i<len1;i++) {
+        left[i] = arr[original_size++];
     }
-    for(int i=0;i<left_arr_size;i++)cout<<left[i]<<" ";
-    cout<<"\n";
-    for(int j=0;j<right_arr_size;j++){
-        right[j] = arr[mid+1+j];
-    }
-    for(int i=0;i<right_arr_size;i++)cout<<right[i]<<" ";
-    cout<<"\n";
-    int i,j = 0;
-    int k=begin;
-    while(i<left_arr_size && j < right_arr_size){
+    original_size = mid+1;
+    for(int i=0;i<len2;i++){
+      right[i] = arr[original_size++];  
+    } 
+    
+    int i=0;
+    int j=0;
+    int k=s;
+    while(i < len1 && j < len2){
         if(left[i] <= right[j]){
             arr[k] = left[i];
+            k++;
             i++;
         }
         else{
             arr[k] = right[j];
+            k++;
             j++;
         }
-        k++;
     }
-    while(i < left_arr_size){
+    while(i < len1){
         arr[k] = left[i];
         i++;k++;
     }
-    while(j < right_arr_size){
+    while(j < len2){
         arr[k] = right[j];
         j++;k++;
     }
 }
 
-void MergeSort(int arr[],int start, int end){
-    if(start >= end) return;
-    int mid = (start+end)/2;
-    MergeSort(arr, start, mid);
-    MergeSort(arr,mid+1, end);
-    Merge(arr,start, mid, end);
+void mergeSort(int arr[], int s, int e){
+    if(s >= e)return;
+    int mid = (s+e)/2;
+    //left part sort
+    mergeSort(arr, s, mid);
+    //right part sort
+    mergeSort(arr, mid+1, e);
+    //mergetwo sorted parts;
+    merge(arr,s,e);
 }
-int main(){
-    int n;
-    cin>>n;
-    int arr[n];
-    for(int i=0;i<n;i++)cin>>arr[i];
-    MergeSort(arr,0,n-1);
-    for(int i=0;i<n;i++) cout<<arr[i]<<" ";
 
+int main()
+{
+    int arr[] = {6,9,11,12,2,3,5,7};
+    int size = 8;
+    mergeSort(arr,0,size-1);
+    for(int i =0;i<size;i++)cout<<arr[i]<<" ";
+    return 0;
 }
