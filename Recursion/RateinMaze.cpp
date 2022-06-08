@@ -24,12 +24,21 @@ void print(int **arr, int **visited_arr, int n)
 
 void RateinMaze(int **arr, vector<string> &ans, int x, int y, int n, string output, int **visited_arr)
 {
-    cout << "the output string is: " << output << "\n";
-    print(arr, visited_arr, n);
+    //cout << "the output string is: " << output << "\n";
+    //print(arr, visited_arr, n);
     // base Condition
     if (x == n - 1 && y == n - 1)
     {
         ans.push_back(output);
+        visited_arr[n-1][n-1] = 1;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                cout << visited_arr[i][j] << " ";
+            }
+            cout << "\n";
+        }
         return;
     }
     // recursive call
@@ -71,7 +80,6 @@ void RateinMaze(int **arr, vector<string> &ans, int x, int y, int n, string outp
             output.pop_back();
         }
     }
-
     visited_arr[x][y] = 0;
 }
 int main()
