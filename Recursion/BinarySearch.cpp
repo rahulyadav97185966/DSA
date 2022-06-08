@@ -5,7 +5,6 @@ bool BinarySearch(int *arr,int k,int s, int e){
 
     //Base condn
     if(s > e)return false;
-
     int mid = (s+e)/2;
     if(arr[mid] == k)return true;
 
