@@ -6,7 +6,7 @@ bool isPossible(ll arr[],ll n, ll mid,ll cows){
 
     ll cows_req=1;
     ll prev_val = arr[0];
-    for(ll i=1;i<n;i++){
+    for(ll i=0;i<n;i++){
         if(arr[i]-prev_val >= mid){
             prev_val = arr[i];
             cows_req++;
@@ -19,8 +19,8 @@ bool isPossible(ll arr[],ll n, ll mid,ll cows){
 ll Solution(ll arr[],ll n, ll cows){
 
     sort(arr,arr+n);
-    ll s = arr[0];
-    ll e = arr[n-1]-arr[0];
+    ll s = 0;
+    ll e = arr[n-1];
     ll ans;
     while(s <= e){
 

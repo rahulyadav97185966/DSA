@@ -51,6 +51,11 @@ int main(){
     cout<<&ptr4<<endl;
     cout<<*ptr4<<endl;
     cout<<*(ptr4 + 0)<<endl;
+    cout<<"\n\n";
+    cout<<"read beloew"<<endl;
+    cout<<*ptr+2<<endl;
+    cout<<*ptr+1<<endl;
+    cout<<*ptr+0<<endl;
     cout<<"this is arr"<<*(arr + 0)<<endl;
     cout<<sizeof(ptr)<<endl;
     cout<<sizeof(arr)<<endl;
@@ -61,15 +66,14 @@ int main(){
     int x = 6;
     int* ptr5 = &x;
     int** ptr6 = &ptr5;
-    cout<<x<<endl;
-    cout<<&x<<endl;
-    cout<<ptr5<<endl;
-    cout<<&ptr5<<endl;
-    cout<<*ptr5<<endl;
-    cout<<ptr6<<endl;
-    cout<<&ptr6<<endl;
-    cout<<*ptr6<<endl;
-    cout<<**ptr6<<endl;
-
+    // cout<<x<<endl;
+    // cout<<&x<<endl;
+    // cout<<ptr5<<endl;
+    // cout<<&ptr5<<endl;
+    // cout<<*ptr5<<endl;
+    // cout<<ptr6<<endl;
+    // cout<<&ptr6<<endl;
+    // cout<<*ptr6<<endl;
+    // cout<<**ptr6<<endl;
     return 0;
 }

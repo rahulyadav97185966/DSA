@@ -134,24 +134,23 @@ void print(Node *&head)
 int main()
 {
     // creation of a node
-    Node *node1 = new Node(10);
+    Node *node1 = new Node(7);
     // pointing head to the node
     Node *head = node1;
     print(head);
 
-    insertAtHead(head, 11);
+    insertAtHead(head, 6);
+    insertAtHead(head, 5);
+    insertAtHead(head, 4);
+    insertAtHead(head, 3);
+    insertAtHead(head, 2);
+    insertAtHead(head, 1);
     print(head);
-
-    insertAtHead(head, 12);
-    print(head);
-
-    insertAtTail(head, 13);
-    print(head);
-
-    insertAtMiddle(head, 4, 30);
-    print(head);
-
-    deleteTargetNode(head, 12, 1);
-    print(head);
+    Node* P = new Node(-1);
+    P = head -> next -> next -> next ;
+    P -> next -> next -> next -> next = head -> next -> next -> next -> next;
+    head -> next -> next -> next = P -> next -> next;
+    int X = head -> next -> next -> next -> next -> next -> next -> next -> data; 
+    cout<<X;
     return 0;
 }

@@ -1,8 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-int coinChange(int coins[], int n, int amount, int currentIndex) {
+// this is not coin change this is number of ways to form the amount
     if(amount == 0){
+int coinChange(int coins[], int n, int amount, int currentIndex) {
         return 1;
     }
     if(amount < 0){
