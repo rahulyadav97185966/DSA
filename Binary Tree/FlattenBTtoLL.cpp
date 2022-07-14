@@ -25,43 +25,34 @@ Node* buildTree(Node* root){
     cout<<"Enter value for right of node "<<d<<endl;
     root->right = buildTree(root->right);
 }
-Node* findPred(Node* current){
-    Node* pre = current->left;
-    while(pre->right != NULL && pre->right != current){
-        pre = pre->right;
-    }
-    return pre;
-}
-void MorrisTraversal(Node* root){
+void FlattenLL(Node* &root){
     if(root == NULL){
         return;
     }
     Node* current = root;
     while(current != NULL){
-        if(current->left == NULL){
-            cout<<current->data<<" ";
-            current = current->right;
-        }
-        else{
-            Node* predesor = findPred(current);
-            if(predesor->right == NULL){
-                predesor->right = current;
-                current = current->left;
+        if(current->left != NULL){
+            Node* pred = current->left;
+            while(pred->right){
+                pred = pred->right;
             }
-            else{
-                predesor->right = NULL;
-                cout<<current->data<<" ";
-                current = current->right;
-            }
+            pred->right = current->right;
+            current->right = current->left;
+            current->left = NULL; // we can do this to current->left to null or we can use 45 line
         }
+        current = current->right;
     }
-
+    //left part null
+    // current = root;
+    // while(current != NULL){
+    //     current->left = NULL;
+    //     current = current->right;
+    // }
 }
-
 int main(){
     Node* root = NULL;
     root = buildTree(root);
-    cout<<"\nMorris traversal is "<<endl;
-    MorrisTraversal(root);
+    FlattenLL(root);
+    
     return 0;
 }
