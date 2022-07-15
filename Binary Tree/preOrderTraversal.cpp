@@ -26,7 +26,7 @@ Node* buildTree(Node* root){
     cout<<"Enter the value of the right "<<d<<endl;
     root->right = buildTree(root->right);
 }
-//inorder follows NLR (node, left, right)
+//preorder follows NLR (node, left, right)
 void preOrder(Node* root){
     if(root == NULL){
         return;
@@ -35,11 +35,30 @@ void preOrder(Node* root){
     preOrder(root->left);
     preOrder(root->right);
 }
-
+//Iterative preorder Traversal (Node, left, right)
+//For iterative way we need to use stack and push the root and till the stack is not emptyy we need to pop if right is present thenn again insert into it we need to insert right first cause we need to proceess the left tree first
+void preOrderIterative(Node* root){
+    stack<Node*> st;
+    st.push(root);
+    while(!st.empty()){
+        Node* front = st.top();
+        st.pop();
+        cout<<front->data<<" ";
+        if(front->right){
+            st.push(front->right);
+        }
+        if(front->left){
+            st.push(front->left);
+        }
+    }
+}
 int main(){
     Node* root = NULL;
     root = buildTree(root);
+     // 1 2 4 -1 -1 -1 3 5 -1 -1 6 -1 -1
     cout<<"Preorder traversal of the tree is "<<endl;
     preOrder(root);
+    cout<<"\nPreorder traversal of the tree is Iteratively "<<endl;
+    preOrderIterative(root);
     return 0;
 }

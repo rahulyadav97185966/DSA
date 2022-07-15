@@ -35,11 +35,30 @@ void inOrder(Node* root){
     cout<<root->data<<" ";
     inOrder(root->right);
 }
+//Iterative inorder traversal
+void inOrderIterative(Node* root){
+    stack<Node*> st;
+    Node* curr = root;
+    while(curr != NULL || !st.empty())
+    {
+        while(curr != NULL){
+            st.push(curr);
+            curr = curr->left;
+        }
+        curr = st.top();
+        st.pop();
+        cout<<curr->data<<" ";
+        curr = curr->right;
+    }
+}
 
 int main(){
     Node* root = NULL;
     root = buildTree(root);
-    cout<<"Preorder traversal of the tree is "<<endl;
+    //1 2 4 -1 -1 5 -1 -1 3 -1 6 -1 -1
+    cout<<"inorder traversal of the tree is "<<endl;
     inOrder(root);
+    cout<<"\ninorder traversal of the tree iteraively is "<<endl;
+    inOrderIterative(root);
     return 0;
 }

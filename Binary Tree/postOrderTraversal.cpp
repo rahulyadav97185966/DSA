@@ -36,11 +36,34 @@ void postOrder(Node* root){
     postOrder(root->right);
     cout<<root->data<<" ";
 }
-
+//Iterative postorder Traversal
+void postOrderTraversal(Node* root){
+    stack<Node*> st1,st2;
+    st1.push(root);
+    while(!st1.empty()){
+        Node* front = st1.top();
+        st1.pop();
+        st2.push(front);
+        if(front->left){
+            st1.push(front->left);
+        }
+        if(front->right){
+            st1.push(front->right);
+        }
+    }
+    while(!st2.empty()){
+        Node* topNode = st2.top();
+        st2.pop();
+        cout<<topNode->data<<" ";
+    }
+}
 int main(){
     Node* root = NULL;
     root = buildTree(root);
+    //1 2 4 -1 -1 5 -1 -1 3 -1 6 -1 -1
     cout<<"Preorder traversal of the tree is "<<endl;
     postOrder(root);
+    cout<<"\nPreorder traversal of the tree Iteratively is "<<endl;
+    postOrderTraversal(root);
     return 0;
 }

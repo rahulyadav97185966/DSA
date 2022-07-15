@@ -26,16 +26,6 @@ Node* buildTree(Node* root){
     cout<<"Enter the value of the right "<<d<<endl;
     root->right = buildTree(root->right);
 }
-
-int HeightOfTree(Node* root){
-    if(root == NULL)
-        return 0;
-    
-    int leftHeight = HeightOfTree(root->left);
-    int rightHeight = HeightOfTree(root->right);
-
-    return max(leftHeight, rightHeight)+1;
-}
 bool isIdentical(Node* p, Node* q){
     if(p == NULL && q == NULL)
         return true;

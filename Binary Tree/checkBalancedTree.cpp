@@ -53,11 +53,11 @@ pair<bool, int> balancedFast(Node* root){
         pair<bool, int> p = make_pair(true,0);
         return p;
     }
-    pair<int, int> leftPair = balancedFast(root->left);
-    pair<int, int> rightPair = balancedFast(root->right);
+    pair<bool, int> leftPair = balancedFast(root->left);
+    pair<bool, int> rightPair = balancedFast(root->right);
 
-    int leftAns = leftPair.first;
-    int rightAns = rightPair.first;
+    bool leftAns = leftPair.first;
+    bool rightAns = rightPair.first;
     int diff = abs(leftPair.second - rightPair.second ) <= 1;
 
     pair<bool, int> ans;
