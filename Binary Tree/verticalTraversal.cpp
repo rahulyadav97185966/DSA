@@ -28,7 +28,7 @@ Node* buildTree(Node* root){
 }
 void VerticalTraversal(Node* root, vector<int> &ans){
     map<int, map<int, vector<int> > > nodes;
-    queue<pair<Node*, pair<int, int > > > q;
+    queue<pair<Node*, pair<int, int > > > q; // frontnode, usla hd and level
     if(root == NULL){
         return;
     } 

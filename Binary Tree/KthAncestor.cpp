@@ -26,6 +26,22 @@ Node* buildTree(Node* root){
     cout<<"Enter the value of the right "<<d<<endl;
     root->right = buildTree(root->right);
 }
+void kthAncestorUsingvector(Node* root, vector<int> &v, int node, int k, int ans){
+    if(root == NULL)
+        return;
+    int r = root->data;
+    v.push_back(root->data);
+    if(root->data == node){
+        return;
+    }
+    if(root->left == NULL && root->right == NULL){
+        v.pop_back();
+        return;
+    }
+    kthAncestorUsingvector(root->left,v,node,k, ans);
+    kthAncestorUsingvector(root->right,v,node,k, ans);
+
+}
 Node* kthAncestor(Node* root, int &k, int node){
     //base case
     if(root == NULL){
@@ -39,7 +55,7 @@ Node* kthAncestor(Node* root, int &k, int node){
 
     if(leftAns != NULL && rightAns == NULL){
         k--;
-        if(k <= 0){
+        if(k < 0){
             k = INT_MAX;
             return root;
         }
@@ -47,7 +63,7 @@ Node* kthAncestor(Node* root, int &k, int node){
     }
     if(leftAns == NULL && rightAns != NULL){
         k--;
-        if(k <= 0){
+        if(k < 0){
             k = INT_MAX;
             return root;
         }
@@ -57,6 +73,7 @@ Node* kthAncestor(Node* root, int &k, int node){
 }
 int main(){
     Node* root = NULL;
+    //1 2 4 -1 -1 5 -1 7 8 -1 -1 9 -1 -1 3 6 -1 -1 -1
     root = buildTree(root);
     if(root == NULL){
         cout<<"ERROR";
@@ -67,6 +84,9 @@ int main(){
         cout<<"-1";
     }
     cout<<node1->data<<"\n";
-
+    vector<int> v;
+    kthAncestorUsingvector(root, v, 9, 3, -1);
+    for(auto i : v)cout<<i<<" ";
+    
     return 0;
 }
