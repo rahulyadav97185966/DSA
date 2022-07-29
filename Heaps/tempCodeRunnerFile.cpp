@@ -1,0 +1,3 @@
+
+    h.deleteFromHeap();
+    h.print();
