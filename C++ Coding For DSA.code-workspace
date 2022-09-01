@@ -9,7 +9,9 @@
 			"ostream": "cpp",
 			"iostream": "cpp",
 			"array": "cpp",
-			"regex": "cpp"
+			"regex": "cpp",
+			"random": "cpp",
+			"new": "cpp"
 		}
 	}
 }

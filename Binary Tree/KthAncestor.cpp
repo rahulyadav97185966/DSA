@@ -52,7 +52,6 @@ Node* kthAncestor(Node* root, int &k, int node){
     }
     Node* leftAns = kthAncestor(root->left, k, node);
     Node* rightAns = kthAncestor(root->right, k, node);
-
     if(leftAns != NULL && rightAns == NULL){
         k--;
         if(k < 0){

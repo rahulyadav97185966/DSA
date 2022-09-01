@@ -105,38 +105,38 @@ int main(){
 
     h.deleteFromHeap();
     h.print();
-    // int arr[6] = {-1, 54, 53, 55, 52, 50};
-    // int n = 5;
-    // for(int i=n/2;i>0;i--){
-    //     heapify(arr, n, i);
-    // }
-    // cout<<"printing the array\n";
-    // for(int i=0;i<=n;i++){
-    //     cout<<arr[i]<<" ";
-    // }
-    // cout<<"\n";
+    int arr[6] = {-1, 54, 53, 55, 52, 50};
+    int n = 5;
+    for(int i=n/2;i>0;i--){
+        heapify(arr, n, i);
+    }
+    cout<<"printing the array\n";
+    for(int i=0;i<=n;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<"\n";
 
-    // cout<<"heap sort is \n";
-    // HeapSort(arr, n);
-    // for(int i=0;i<=n;i++)cout<<arr[i]<<" ";
+    cout<<"heap sort is \n";
+    HeapSort(arr, n);
+    for(int i=0;i<=n;i++)cout<<arr[i]<<" ";
 
 
-    // cout<<"\nusing priority queue\n";
-    // priority_queue<int> pq;
-    // pq.push(4);
-    // pq.push(2);
-    // pq.push(5);
-    // pq.push(3);
-    // pq.pop();
-    // cout<<pq.top()<<endl;
+    cout<<"\nusing priority queue\n";
+    priority_queue<int> pq;
+    pq.push(4);
+    pq.push(2);
+    pq.push(5);
+    pq.push(3);
+    pq.pop();
+    cout<<pq.top()<<endl;
 
-    // //min heap
-    // priority_queue<int, vector<int>, greater<int>> minHeap;
-    // minHeap.push(4);
-    // minHeap.push(2);
-    // minHeap.push(5);
-    // minHeap.push(3);
-    // cout<<minHeap.top();
+    //min heap
+    priority_queue<int, vector<int>, greater<int>> minHeap;
+    minHeap.push(4);
+    minHeap.push(2);
+    minHeap.push(5);
+    minHeap.push(3);
+    cout<<minHeap.top();
 
     return 0;
 }
